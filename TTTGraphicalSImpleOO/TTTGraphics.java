@@ -1,4 +1,4 @@
-package TTTGraphicalSimpleOO;
+package TTTGraphicalSImpleOO;
 
 import java.awt.*;
 import java.awt.event.*;
