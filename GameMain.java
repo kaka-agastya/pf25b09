@@ -1,7 +1,7 @@
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-
 /**
  * Tic-Tac-Toe: Two-player Graphic version with better OO design.
  * The Board and Cell classes are separated in their own classes.
@@ -13,15 +13,15 @@ public class GameMain extends JPanel {
     public static final String TITLE = "Tic Tac Toe";
     public static final Color COLOR_BG = Color.WHITE;
     public static final Color COLOR_BG_STATUS = new Color(216, 216, 216);
-    public static final Color COLOR_CROSS = new Color(239, 105, 80); // Red #EF6950
+    public static final Color COLOR_CROSS = new Color(239, 105, 80);  // Red #EF6950
     public static final Color COLOR_NOUGHT = new Color(64, 154, 225); // Blue #409AE1
     public static final Font FONT_STATUS = new Font("OCR A Extended", Font.PLAIN, 14);
 
     // Define game objects
-    private Board board; // the game board
-    private State currentState; // the current state of the game
-    private Seed currentPlayer; // the current player
-    private JLabel statusBar; // for displaying status message
+    private Board board;         // the game board
+    private State currentState;  // the current state of the game
+    private Seed currentPlayer;  // the current player
+    private JLabel statusBar;    // for displaying status message
 
     /** Constructor to setup the UI and game components */
     public GameMain() {
@@ -29,7 +29,7 @@ public class GameMain extends JPanel {
         // This JPanel fires MouseEvent
         super.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) { // mouse-clicked handler
+            public void mouseClicked(MouseEvent e) {  // mouse-clicked handler
                 int mouseX = e.getX();
                 int mouseY = e.getY();
                 // Get the row and column clicked
@@ -50,11 +50,11 @@ public class GameMain extends JPanel {
                         // Switch player
                         currentPlayer = (currentPlayer == Seed.CROSS) ? Seed.NOUGHT : Seed.CROSS;
                     }
-                } else { // game over
-                    newGame(); // restart the game
+                } else {        // game over
+                    newGame();  // restart the game
                 }
                 // Refresh the drawing canvas
-                repaint(); // Callback paintComponent().
+                repaint();  // Callback paintComponent().
             }
         });
 
@@ -80,7 +80,7 @@ public class GameMain extends JPanel {
 
     /** Initialize the game (run once) */
     public void initGame() {
-        board = new Board(); // allocate the game-board
+        board = new Board();  // allocate the game-board
     }
 
     /** Reset the game-board contents and the current-state, ready for new game */
@@ -90,17 +90,17 @@ public class GameMain extends JPanel {
                 board.cells[row][col].content = Seed.NO_SEED; // all cells empty
             }
         }
-        currentPlayer = Seed.CROSS; // cross plays first
-        currentState = State.PLAYING; // ready to play
+        currentPlayer = Seed.CROSS;    // cross plays first
+        currentState = State.PLAYING;  // ready to play
     }
 
     /** Custom painting codes on this JPanel */
     @Override
-    public void paintComponent(Graphics g) { // Callback via repaint()
+    public void paintComponent(Graphics g) {  // Callback via repaint()
         super.paintComponent(g);
         setBackground(COLOR_BG); // set its background color
 
-        board.paint(g); // ask the game board to paint itself
+        board.paint(g);  // ask the game board to paint itself
 
         // Print status-bar message
         if (currentState == State.PLAYING) {
@@ -129,7 +129,7 @@ public class GameMain extends JPanel {
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.pack();
                 frame.setLocationRelativeTo(null); // center the application window
-                frame.setVisible(true); // show it
+                frame.setVisible(true);            // show it
             }
         });
     }

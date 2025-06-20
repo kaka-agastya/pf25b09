@@ -1,4 +1,6 @@
+
 import java.awt.*;
+
 /**
  * The Board class models the ROWS-by-COLS game board.
  */
@@ -30,7 +32,7 @@ public class Board {
          for (int col = 0; col < COLS; ++col) {
             // Allocate element of the array
             cells[row][col] = new Cell(row, col);
-               // Cells are initialized in the constructor
+            // Cells are initialized in the constructor
          }
       }
    }
@@ -55,19 +57,19 @@ public class Board {
 
       // Compute and return the new game state
       if (cells[selectedRow][0].content == player  // 3-in-the-row
-                && cells[selectedRow][1].content == player
-                && cells[selectedRow][2].content == player
-             || cells[0][selectedCol].content == player // 3-in-the-column
-                && cells[1][selectedCol].content == player
-                && cells[2][selectedCol].content == player
-             || selectedRow == selectedCol     // 3-in-the-diagonal
-                && cells[0][0].content == player
-                && cells[1][1].content == player
-                && cells[2][2].content == player
-             || selectedRow + selectedCol == 2 // 3-in-the-opposite-diagonal
-                && cells[0][2].content == player
-                && cells[1][1].content == player
-                && cells[2][0].content == player) {
+              && cells[selectedRow][1].content == player
+              && cells[selectedRow][2].content == player
+              || cells[0][selectedCol].content == player // 3-in-the-column
+              && cells[1][selectedCol].content == player
+              && cells[2][selectedCol].content == player
+              || selectedRow == selectedCol     // 3-in-the-diagonal
+              && cells[0][0].content == player
+              && cells[1][1].content == player
+              && cells[2][2].content == player
+              || selectedRow + selectedCol == 2 // 3-in-the-opposite-diagonal
+              && cells[0][2].content == player
+              && cells[1][1].content == player
+              && cells[2][0].content == player) {
          return (player == Seed.CROSS) ? State.CROSS_WON : State.NOUGHT_WON;
       } else {
          // Nobody win. Check for DRAW (all cells occupied) or PLAYING.
@@ -88,13 +90,13 @@ public class Board {
       g.setColor(COLOR_GRID);
       for (int row = 1; row < ROWS; ++row) {
          g.fillRoundRect(0, Cell.SIZE * row - GRID_WIDTH_HALF,
-               CANVAS_WIDTH - 1, GRID_WIDTH,
-               GRID_WIDTH, GRID_WIDTH);
+                 CANVAS_WIDTH - 1, GRID_WIDTH,
+                 GRID_WIDTH, GRID_WIDTH);
       }
       for (int col = 1; col < COLS; ++col) {
          g.fillRoundRect(Cell.SIZE * col - GRID_WIDTH_HALF, 0 + Y_OFFSET,
-               GRID_WIDTH, CANVAS_HEIGHT - 1,
-               GRID_WIDTH, GRID_WIDTH);
+                 GRID_WIDTH, CANVAS_HEIGHT - 1,
+                 GRID_WIDTH, GRID_WIDTH);
       }
 
       // Draw all the cells
