@@ -1,0 +1,65 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "DatabaseTest",
+            "request": "launch",
+            "mainClass": "DatabaseTest",
+            "projectName": "FP Dasprog_80430e42",
+            // Untuk menambahkan JAR eksternal, gunakan pengaturan build tool atau konfigurasi project.
+        },
+        {
+            "type": "java",
+            "name": "GameMain",
+            "request": "launch",
+            "mainClass": "GameMain",
+            "projectName": "FP Dasprog_80430e42"
+        },
+        {
+            "type": "java",
+            "name": "MySqlExample",
+            "request": "launch",
+            "mainClass": "MySqlExample",
+            "projectName": "FP Dasprog_80430e42"
+        },
+        {
+            "type": "java",
+            "name": "TTTConsoleNonOO",
+            "request": "launch",
+            "mainClass": "TTTConsoleNonOO",
+            "projectName": "FP Dasprog_80430e42"
+        },
+        {
+            "type": "java",
+            "name": "GameMain(1)",
+            "request": "launch",
+            "mainClass": "TTTConsoleOO.GameMain",
+            "projectName": "FP Dasprog_80430e42"
+        },
+        {
+            "type": "java",
+            "name": "GameMain(2)",
+            "request": "launch",
+            "mainClass": "TTTGraphicalOODesign.GameMain",
+            "projectName": "FP Dasprog_80430e42"
+        },
+        {
+            "type": "java",
+            "name": "TTTGraphics",
+            "request": "launch",
+            "mainClass": "TTTGraphicalSImpleOO.TTTGraphics",
+            "projectName": "FP Dasprog_80430e42"
+        }
+    ]
+}
