@@ -1,8 +1,17 @@
 
+public enum State { 
+    PLAYING("Playing"), 
+    DRAW("It's a Draw"), 
+    CROSS_WON("'X' Won"), 
+    NOUGHT_WON("'O' Won");
 
-/**
- *  The enum State contains the various game states of the TTT game
- */
-public enum State {  // to save as "State.java"
-   PLAYING, DRAW, CROSS_WON, NOUGHT_WON
+    private String displayName;
+
+    private State(String displayName) {
+        this.displayName = displayName;
+    }
+
+    public String getDisplayName() {
+        return displayName;
+    }
 }
