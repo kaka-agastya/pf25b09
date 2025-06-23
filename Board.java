@@ -1,9 +1,8 @@
 
+
 import java.awt.*;
 
-/**
- * The Board class models the ROWS-by-COLS game board.
- */
+
 public class Board {
    // Define named constants
    public static final int ROWS = 3;  // ROWS x COLS cells
@@ -16,26 +15,28 @@ public class Board {
    public static final Color COLOR_GRID = Color.LIGHT_GRAY;  // grid lines
    public static final int Y_OFFSET = 1;  // Fine tune for better display
 
+
    // Define properties (package-visible)
    /** Composes of 2D array of ROWS-by-COLS Cell instances */
    Cell[][] cells;
+
 
    /** Constructor to initialize the game board */
    public Board() {
       initGame();
    }
 
+
    /** Initialize the game objects (run once) */
    public void initGame() {
       cells = new Cell[ROWS][COLS]; // allocate the array
       for (int row = 0; row < ROWS; ++row) {
          for (int col = 0; col < COLS; ++col) {
-            // Allocate element of the array
             cells[row][col] = new Cell(row, col);
-            // Cells are initialized in the constructor
          }
       }
    }
+
 
    /** Reset the game board, ready for new game */
    public void newGame() {
@@ -45,15 +46,10 @@ public class Board {
          }
       }
    }
-
-   /**
-    *  The given player makes a move on (selectedRow, selectedCol).
-    *  Update cells[selectedRow][selectedCol]. Compute and return the
-    *  new game state (PLAYING, DRAW, CROSS_WON, NOUGHT_WON).
-    */
    public State stepGame(Seed player, int selectedRow, int selectedCol) {
       // Update game board
       cells[selectedRow][selectedCol].content = player;
+
 
       // Compute and return the new game state
       if (cells[selectedRow][0].content == player  // 3-in-the-row
@@ -84,6 +80,7 @@ public class Board {
       }
    }
 
+
    /** Paint itself on the graphics canvas, given the Graphics context */
    public void paint(Graphics g) {
       // Draw the grid-lines
@@ -99,6 +96,7 @@ public class Board {
                  GRID_WIDTH, GRID_WIDTH);
       }
 
+
       // Draw all the cells
       for (int row = 0; row < ROWS; ++row) {
          for (int col = 0; col < COLS; ++col) {
@@ -107,3 +105,4 @@ public class Board {
       }
    }
 }
+

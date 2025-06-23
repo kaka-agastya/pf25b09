@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "GamePanel",
+            "request": "launch",
+            "mainClass": "GamePanel",
+            "projectName": "FP Dasprog_80430e42"
+        },
+        {
+            "type": "java",
             "name": "MainApp",
             "request": "launch",
             "mainClass": "MainApp",
@@ -75,3 +82,4 @@
         }
     ]
 }
+
