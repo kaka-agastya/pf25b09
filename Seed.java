@@ -6,7 +6,7 @@ import javax.swing.ImageIcon;
 
 public enum Seed {   
    CROSS("X", "images/cross new.png"),
-   NOUGHT("O", "images/round new.png"),
+   NOUGHT("O", "images/nought new.png"),
    NO_SEED(" ", null);
 
    
