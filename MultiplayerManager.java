@@ -35,6 +35,7 @@ public class MultiplayerManager {
         );
 
         if (choice == 0) {
+            // Create new game
             gameId = JOptionPane.showInputDialog(null, "Enter Game ID for the new game:");
             if (gameId == null || gameId.trim().isEmpty()) {
                 gameUI.setStatusText("Game ID cannot be empty!");
