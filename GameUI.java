@@ -1,13 +1,11 @@
 import javax.swing.*;
 import java.awt.*;
 
-
 public class GameUI {
     public static final Color COLOR_CROSS = new Color(239, 105, 80);
     public static final Color COLOR_NOUGHT = new Color(64, 154, 225);
     public static final Color COLOR_BG_STATUS = new Color(0, 0, 0, 255);
     public static final Font FONT_STATUS = new Font("OCR A Extended", Font.PLAIN, 14);
-
 
     private GameLogic gameLogic;
     private JPanel topPanel;
@@ -29,11 +27,9 @@ public class GameUI {
     private JButton resetScoreButton;
     private JLabel statusBar;
 
-
     public GameUI() {
         initUI();
     }
-
 
     private void initUI() {
         topPanel = new JPanel();
@@ -41,54 +37,43 @@ public class GameUI {
         topPanel.setLayout(new BoxLayout(topPanel, BoxLayout.Y_AXIS));
         topPanel.setBorder(BorderFactory.createEmptyBorder(20, 0, 10, 0));
 
-
         titleLabel = new JLabel("Tiny Tactics!");
         titleLabel.setFont(new Font("Arial", Font.BOLD, 48));
         titleLabel.setForeground(Color.YELLOW);
         titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-
         JPanel playerNamesPanel = new JPanel();
         playerNamesPanel.setOpaque(false);
         playerNamesPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 0));
-
 
         playerXNameLabel = new JLabel("Player X: -");
         playerXNameLabel.setFont(new Font("Arial", Font.BOLD, 20));
         playerXNameLabel.setForeground(COLOR_CROSS);
 
-
         scoreLabel = new JLabel("0 | 0");
         scoreLabel.setFont(new Font("Arial", Font.BOLD, 24));
         scoreLabel.setForeground(Color.WHITE);
-
 
         playerONameLabel = new JLabel("Player O: -");
         playerONameLabel.setFont(new Font("Arial", Font.BOLD, 20));
         playerONameLabel.setForeground(COLOR_NOUGHT);
 
-
         playerNamesPanel.add(playerXNameLabel);
         playerNamesPanel.add(scoreLabel);
         playerNamesPanel.add(playerONameLabel);
-
 
         modeButtonsPanel = new JPanel();
         modeButtonsPanel.setOpaque(false);
         modeButtonsPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 15, 5));
 
-
         playVsComputerButton = new JButton("Play vs Computer");
         styleButton(playVsComputerButton, new Color(64, 154, 225));
-
 
         playVsFriendButton = new JButton("Play vs Friend");
         styleButton(playVsFriendButton, new Color(239, 105, 80));
 
-
         modeButtonsPanel.add(playVsComputerButton);
         modeButtonsPanel.add(playVsFriendButton);
-
 
         topPanel.add(titleLabel);
         topPanel.add(Box.createVerticalStrut(10));
@@ -96,25 +81,20 @@ public class GameUI {
         topPanel.add(Box.createVerticalStrut(10));
         topPanel.add(modeButtonsPanel);
 
-
         bottomPanel = new JPanel();
         bottomPanel.setOpaque(false);
         bottomPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 15, 10));
 
-
         playAgainButton = new JButton("Play Again");
         styleButton(playAgainButton, new Color(239, 105, 80));
-        playAgainButton.setVisible(false); // Awalnya tidak terlihat
-
+        playAgainButton.setVisible(false);
 
         resetScoreButton = new JButton("Reset Score");
         styleButton(resetScoreButton, new Color(239, 105, 80));
-        resetScoreButton.setVisible(false); // Awalnya tidak terlihat
-
+        resetScoreButton.setVisible(false);
 
         bottomPanel.add(playAgainButton);
         bottomPanel.add(resetScoreButton);
-
 
         statusBar = new JLabel();
         statusBar.setFont(FONT_STATUS);
@@ -124,11 +104,9 @@ public class GameUI {
         statusBar.setHorizontalAlignment(JLabel.CENTER);
         statusBar.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 12));
 
-
         createSeedSelectionPanel();
         createFirstTurnSelectionPanel();
     }
-
 
     private void styleButton(JButton button, Color bgColor) {
         button.setFont(new Font("Arial", Font.BOLD, 16));
@@ -141,7 +119,6 @@ public class GameUI {
         button.setBorder(BorderFactory.createLineBorder(new Color(40, 120, 180), 2, true));
     }
 
-
     private void styleTurnButton(JButton button, Color bgColor) {
         button.setFont(new Font("Arial", Font.BOLD, 28));
         button.setBackground(bgColor);
@@ -153,26 +130,21 @@ public class GameUI {
         button.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, 3, true));
     }
 
-
     private void createSeedSelectionPanel() {
         seedSelectionPanel = new JPanel();
         seedSelectionPanel.setOpaque(false);
         seedSelectionPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 20));
         seedSelectionPanel.setBorder(BorderFactory.createEmptyBorder(50, 50, 50, 50));
 
-
         selectXButton = new JButton("Play as X");
         styleButton(selectXButton, COLOR_CROSS);
-
 
         selectOButton = new JButton("Play as O");
         styleButton(selectOButton, COLOR_NOUGHT);
 
-
         seedSelectionPanel.add(selectXButton);
         seedSelectionPanel.add(selectOButton);
     }
-
 
     private void createFirstTurnSelectionPanel() {
         firstTurnSelectionPanel = new JPanel();
@@ -180,19 +152,15 @@ public class GameUI {
         firstTurnSelectionPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 20));
         firstTurnSelectionPanel.setBorder(BorderFactory.createEmptyBorder(50, 50, 50, 50));
 
-
         playerStartsButton = new JButton("You Start");
         styleTurnButton(playerStartsButton, COLOR_NOUGHT);
-
 
         aiStartsButton = new JButton("AI Starts");
         styleTurnButton(aiStartsButton, COLOR_CROSS);
 
-
         firstTurnSelectionPanel.add(playerStartsButton);
         firstTurnSelectionPanel.add(aiStartsButton);
     }
-
 
     public void updateScoreLabel() {
         if (gameLogic == null) {
@@ -201,7 +169,6 @@ public class GameUI {
         }
         SwingUtilities.invokeLater(() -> scoreLabel.setText(gameLogic.getXScore() + " | " + gameLogic.getOScore()));
     }
-
 
     public void updatePlayerNameLabels() {
         if (gameLogic == null) {
@@ -240,7 +207,6 @@ public class GameUI {
         });
     }
 
-
     public void updateActionButtonsVisibility(boolean visible) {
         SwingUtilities.invokeLater(() -> {
             if (playAgainButton == null || resetScoreButton == null) {
@@ -255,16 +221,23 @@ public class GameUI {
         });
     }
 
+    public void updateModeButtonsVisibility(boolean visible) {
+        SwingUtilities.invokeLater(() -> {
+            modeButtonsPanel.setVisible(visible);
+            topPanel.revalidate();
+            topPanel.repaint();
+            System.out.println("Mode buttons visibility set to: " + visible);
+        });
+    }
 
     public void showSeedSelectionPanel() {
-        modeButtonsPanel.setVisible(false);
+        updateModeButtonsVisibility(false);
         topPanel.getParent().add(seedSelectionPanel, BorderLayout.CENTER);
         topPanel.getParent().revalidate();
         topPanel.getParent().repaint();
         setStatusText("Choose your symbol (X or O):");
         updatePlayerNameLabels();
     }
-
 
     public void showFirstTurnPanelForVsAI() {
         topPanel.getParent().remove(seedSelectionPanel);
@@ -275,30 +248,25 @@ public class GameUI {
         updatePlayerNameLabels();
     }
 
-
     public void hideFirstTurnPanel() {
         topPanel.getParent().remove(firstTurnSelectionPanel);
         topPanel.getParent().revalidate();
         topPanel.getParent().repaint();
     }
 
-
     public void showModeButtonsPanel() {
-        modeButtonsPanel.setVisible(true);
+        updateModeButtonsVisibility(true);
         topPanel.getParent().revalidate();
-        topPanel.getParent().repaint();
+        topPanel.repaint();
     }
-
 
     public void setStatusText(String text) {
         SwingUtilities.invokeLater(() -> statusBar.setText(text));
     }
 
-
     public void setGameLogic(GameLogic gameLogic) {
         this.gameLogic = gameLogic;
     }
-
 
     public JPanel getTopPanel() { return topPanel; }
     public JPanel getBottomPanel() { return bottomPanel; }
@@ -312,4 +280,3 @@ public class GameUI {
     public JButton getAiStartsButton() { return aiStartsButton; }
     public JLabel getStatusBar() { return statusBar; }
 }
-

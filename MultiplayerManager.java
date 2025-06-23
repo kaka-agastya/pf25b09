@@ -22,6 +22,7 @@ public class MultiplayerManager {
     }
 
     public void promptMultiplayerSetup() {
+        gameUI.updateModeButtonsVisibility(false); // Sembunyikan tombol mode
         String[] options = {"Create Game", "Join Game"};
         int choice = JOptionPane.showOptionDialog(
                 null,
@@ -44,7 +45,7 @@ public class MultiplayerManager {
                 return;
             }
             try {
-                DatabaseManager.clearGameMoves(gameId); // Operasi database
+                DatabaseManager.clearGameMoves(gameId);
             } catch (SQLException | ClassNotFoundException e) {
                 gameUI.setStatusText("Error clearing game moves: " + e.getMessage());
                 System.err.println("MultiplayerManager: Error clearing game moves: " + e.getMessage());
@@ -53,7 +54,6 @@ public class MultiplayerManager {
                 return;
             }
 
-            // Logika non-database setelah operasi database selesai
             gameLogic.setPlayerRole("X");
             gameLogic.setOpponentUsername("Waiting...");
             gameLogic.newGame();
@@ -72,7 +72,6 @@ public class MultiplayerManager {
                 gameUI.showModeButtonsPanel();
                 return;
             }
-            // Tidak ada operasi database untuk bergabung, hanya inisialisasi
             gameLogic.setPlayerRole("O");
             gameLogic.setOpponentUsername("Host");
             gameLogic.newGame();
@@ -134,6 +133,7 @@ public class MultiplayerManager {
                 gameUI.setStatusText(gameLogic.getCurrentState().getDisplayName() + "! Click Play Again to restart.");
                 gameLogic.setMyTurn(false);
                 gameUI.updateActionButtonsVisibility(true);
+                gameUI.showModeButtonsPanel(); // Tampilkan kembali tombol mode saat permainan berakhir
                 System.out.println("MultiplayerManager: Setting action buttons visible: true");
                 SoundEffect.DIE.play();
             }
@@ -183,6 +183,7 @@ public class MultiplayerManager {
                     gameUI.setStatusText(gameLogic.getCurrentState().getDisplayName() + "! Click Play Again to restart.");
                     gameLogic.setMyTurn(false);
                     gameUI.updateActionButtonsVisibility(true);
+                    gameUI.showModeButtonsPanel(); // Tampilkan kembali tombol mode saat permainan berakhir
                     System.out.println("MultiplayerManager: Setting action buttons visible: true (Opponent move)");
                     SoundEffect.DIE.play();
                 }
