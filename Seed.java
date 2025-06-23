@@ -5,8 +5,8 @@ import java.net.URL;
 import javax.swing.ImageIcon;
 
 public enum Seed {   
-   CROSS("X", "images/cross.gif"),   
-   NOUGHT("O", "images/not.gif"),
+   CROSS("X", "images/cross new.png"),
+   NOUGHT("O", "images/round new.png"),
    NO_SEED(" ", null);
 
    

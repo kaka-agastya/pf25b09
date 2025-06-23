@@ -28,11 +28,11 @@ public class GamePanel extends JPanel implements GameClientListener {
 
 
         try {
-            URL bgURL = getClass().getClassLoader().getResource("images/background.jpg");
+            URL bgURL = getClass().getClassLoader().getResource("images/background new.jpg");
             if (bgURL != null) {
                 backgroundImage = new ImageIcon(bgURL);
             } else {
-                System.err.println("Background image not found: images/background.jpg");
+                System.err.println("Background image not found: images/background new.jpg");
                 setBackground(new Color(50, 50, 100));
             }
         } catch (Exception e) {
