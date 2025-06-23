@@ -75,7 +75,7 @@ public class GameUI {
 
         modeButtonsPanel = new JPanel();
         modeButtonsPanel.setOpaque(false);
-        modeButtonsPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 15, 5));
+        modeButtonsPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 15, 80)); //Button awaL
 
 
         playVsComputerButton = new JButton("Play vs Computer");
@@ -93,23 +93,23 @@ public class GameUI {
         topPanel.add(titleLabel);
         topPanel.add(Box.createVerticalStrut(10));
         topPanel.add(playerNamesPanel);
-        topPanel.add(Box.createVerticalStrut(10));
+        topPanel.add(Box.createVerticalStrut(120)); //Button choose X or O and Start mode
         topPanel.add(modeButtonsPanel);
 
 
         bottomPanel = new JPanel();
         bottomPanel.setOpaque(false);
-        bottomPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 15, 10));
+        bottomPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 15, 100));
 
 
         playAgainButton = new JButton("Play Again");
         styleButton(playAgainButton, new Color(239, 105, 80));
-        playAgainButton.setVisible(false); // Awalnya tidak terlihat
+        playAgainButton.setVisible(false);
 
 
         resetScoreButton = new JButton("Reset Score");
         styleButton(resetScoreButton, new Color(239, 105, 80));
-        resetScoreButton.setVisible(false); // Awalnya tidak terlihat
+        resetScoreButton.setVisible(false);
 
 
         bottomPanel.add(playAgainButton);
@@ -131,7 +131,7 @@ public class GameUI {
 
 
     private void styleButton(JButton button, Color bgColor) {
-        button.setFont(new Font("Arial", Font.BOLD, 16));
+        button.setFont(new Font("Arial", Font.BOLD, 30)); //Button awal
         button.setBackground(bgColor);
         button.setForeground(Color.WHITE);
         button.setFocusPainted(false);
