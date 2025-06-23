@@ -2,11 +2,13 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
 public class AIManager {
     private final GameLogic gameLogic;
     private final GameUI gameUI;
     private final GamePanel gamePanel;
     private TicTacToeAI ai;
+
 
     public AIManager(GameLogic gameLogic, GameUI gameUI, GamePanel gamePanel) {
         if (gameLogic == null || gameUI == null || gamePanel == null) {
@@ -17,17 +19,21 @@ public class AIManager {
         this.gamePanel = gamePanel;
     }
 
+
     public void setPlayerSeed(Seed seed) {
         gameLogic.setPlayerSeed(seed);
     }
+
 
     public void setAiSeed(Seed seed) {
         gameLogic.setAiSeed(seed);
     }
 
+
     public void startVsAIGame(boolean humanStarts) {
         gameUI.hideFirstTurnPanel();
         ai = new TicTacToeAI();
+
 
         String playerSeedDisplay = gameLogic.getPlayerSeed() != null ? gameLogic.getPlayerSeed().getDisplayName() : "Unknown";
         if (humanStarts) {
@@ -49,22 +55,25 @@ public class AIManager {
         gameUI.updatePlayerNameLabels();
     }
 
+
     public void makeMove(int row, int col) {
         if (gameLogic.getCurrentState() == null || gameLogic.getBoard() == null) {
             gameUI.setStatusText("Error: Game state or board is not initialized.");
             System.err.println("GameLogic state or board is null in makeMove");
             return;
         }
-        if (gameLogic.getCurrentState() == State.PLAYING && 
-            gameLogic.getBoard().cells[row][col].content == Seed.NO_SEED) {
+        if (gameLogic.getCurrentState() == State.PLAYING &&
+                gameLogic.getBoard().cells[row][col].content == Seed.NO_SEED) {
             gameLogic.getBoard().cells[row][col].content = gameLogic.getPlayerSeed();
             SoundEffect.EAT_FOOD.play();
             gameLogic.setCurrentState(gameLogic.getBoard().stepGame(gameLogic.getPlayerSeed(), row, col));
+
 
             SwingUtilities.invokeLater(() -> {
                 gamePanel.repaint();
                 gamePanel.paintImmediately(gamePanel.getBounds());
             });
+
 
             System.out.println("Game state after player move: " + gameLogic.getCurrentState());
             if (gameLogic.getCurrentState() == State.PLAYING) {
@@ -93,11 +102,13 @@ public class AIManager {
         }
     }
 
+
     private void aiMakeMove() {
         if (gameLogic.getCurrentState() != State.PLAYING) {
             System.out.println("aiMakeMove: Game not in PLAYING state, exiting.");
             return;
         }
+
 
         if (ai == null) {
             gameUI.setStatusText("Error: AI not initialized!");
@@ -112,6 +123,7 @@ public class AIManager {
             System.out.println("Setting action buttons visible: true (AI null)");
             return;
         }
+
 
         int[] bestMove = ai.findBestMove(gameLogic.getBoard(), gameLogic.getAiSeed());
         if (bestMove == null || bestMove.length < 2) {
@@ -128,8 +140,10 @@ public class AIManager {
             return;
         }
 
+
         int aiRow = bestMove[0];
         int aiCol = bestMove[1];
+
 
         if (aiRow != -1 && aiCol != -1) {
             System.out.println("AI move: Row=" + aiRow + ", Col=" + aiCol + ", Seed=" + gameLogic.getAiSeed());
@@ -137,10 +151,12 @@ public class AIManager {
             SoundEffect.DIE.play();
             gameLogic.setCurrentState(gameLogic.getBoard().stepGame(gameLogic.getAiSeed(), aiRow, aiCol));
 
+
             SwingUtilities.invokeLater(() -> {
                 gamePanel.repaint();
                 gamePanel.paintImmediately(gamePanel.getBounds());
             });
+
 
             System.out.println("Game state after AI move: " + gameLogic.getCurrentState());
             if (gameLogic.getCurrentState() == State.PLAYING) {
@@ -169,3 +185,4 @@ public class AIManager {
         }
     }
 }
+

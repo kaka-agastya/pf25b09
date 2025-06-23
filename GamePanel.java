@@ -7,8 +7,10 @@ import java.net.URL;
 public class GamePanel extends JPanel implements GameClientListener {
     private static final long serialVersionUID = 1L;
 
+
     public static final String TITLE = "Tic Tac Toe";
     public static final Color COLOR_BG_STATUS = new Color(0, 0, 0, 255);
+
 
     private ImageIcon backgroundImage;
     private GameUI gameUI;
@@ -16,12 +18,14 @@ public class GamePanel extends JPanel implements GameClientListener {
     private MultiplayerManager multiplayerManager;
     private AIManager aiManager;
 
+
     public GamePanel(String username) {
         gameUI = new GameUI();
         gameLogic = new GameLogic(username, gameUI, this);
-        gameUI.setGameLogic(gameLogic); 
+        gameUI.setGameLogic(gameLogic); // Set GameLogic di GameUI
         multiplayerManager = new MultiplayerManager(gameLogic, gameUI, this);
         aiManager = new AIManager(gameLogic, gameUI, this);
+
 
         try {
             URL bgURL = getClass().getClassLoader().getResource("images/background.jpg");
@@ -30,11 +34,9 @@ public class GamePanel extends JPanel implements GameClientListener {
             } else {
                 System.err.println("Background image not found: images/background.jpg");
                 setBackground(new Color(50, 50, 100));
-                setBackground(new Color(50, 50, 100));
             }
         } catch (Exception e) {
             System.err.println("Error loading background image: " + e.getMessage());
-            setBackground(new Color(50, 50, 100));
             setBackground(new Color(50, 50, 100));
         }
 
@@ -44,46 +46,26 @@ public class GamePanel extends JPanel implements GameClientListener {
         super.setBorder(BorderFactory.createLineBorder(COLOR_BG_STATUS, 2, false));
         super.setOpaque(false);
 
+
         add(gameUI.getTopPanel(), BorderLayout.PAGE_START);
         add(gameUI.getBottomPanel(), BorderLayout.PAGE_END);
-        add(gameUI.getStatusBar(), BorderLayout.SOUTH); 
+        add(gameUI.getStatusBar(), BorderLayout.SOUTH); // Status bar di bagian bawah
         addMouseListenerToGameBoard();
 
+
         addListeners();
+
 
         gameLogic.initGame();
         gameLogic.newGame();
     }
+
 
     private void addListeners() {
         gameUI.getPlayVsComputerButton().addActionListener(e -> {
             gameLogic.setGameMode(GameLogic.GameMode.VS_AI);
             gameUI.showSeedSelectionPanel();
         });
-        gameUI.getPlayVsFriendButton().addActionListener(e -> {
-            gameLogic.setGameMode(GameLogic.GameMode.MULTIPLAYER);
-            multiplayerManager.promptMultiplayerSetup();
-        });
-        gameUI.getPlayAgainButton().addActionListener(e -> {
-            System.out.println("Play Again button clicked");
-            gameLogic.newGame();
-        });
-        gameUI.getResetScoreButton().addActionListener(e -> {
-            System.out.println("Reset Score button clicked");
-            gameLogic.resetScores();
-        });
-        gameUI.getSelectXButton().addActionListener(e -> {
-            aiManager.setPlayerSeed(Seed.CROSS);
-            aiManager.setAiSeed(Seed.NOUGHT);
-            gameUI.showFirstTurnPanelForVsAI();
-        });
-        gameUI.getSelectOButton().addActionListener(e -> {
-            aiManager.setPlayerSeed(Seed.NOUGHT);
-            aiManager.setAiSeed(Seed.CROSS);
-            gameUI.showFirstTurnPanelForVsAI();
-        });
-        gameUI.getPlayerStartsButton().addActionListener(e -> aiManager.startVsAIGame(true));
-        gameUI.getAiStartsButton().addActionListener(e -> aiManager.startVsAIGame(false));
         gameUI.getPlayVsFriendButton().addActionListener(e -> {
             gameLogic.setGameMode(GameLogic.GameMode.MULTIPLAYER);
             multiplayerManager.promptMultiplayerSetup();
@@ -124,14 +106,17 @@ public class GamePanel extends JPanel implements GameClientListener {
         });
     }
 
+
     private void handleMouseClick(MouseEvent e) {
         int mouseX = e.getX();
         int mouseY = e.getY();
+
 
         int boardStartX = (getWidth() - Board.CANVAS_WIDTH) / 2;
         int boardStartY = (getHeight() - Board.CANVAS_HEIGHT) / 2;
         int boardEndX = boardStartX + Board.CANVAS_WIDTH;
         int boardEndY = boardStartY + Board.CANVAS_HEIGHT;
+
 
         if (mouseX >= boardStartX && mouseX < boardEndX &&
                 mouseY >= boardStartY && mouseY < boardEndY) {
@@ -139,6 +124,7 @@ public class GamePanel extends JPanel implements GameClientListener {
 
             int row = (mouseY - boardStartY) / Cell.SIZE;
             int col = (mouseX - boardStartX) / Cell.SIZE;
+
 
             if (gameLogic.getCurrentState() == State.PLAYING && gameLogic.isMyTurn()) {
                 if (row >= 0 && row < Board.ROWS && col >= 0 && col < Board.COLS
@@ -160,9 +146,11 @@ public class GamePanel extends JPanel implements GameClientListener {
         }
     }
 
+
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
+
 
         if (backgroundImage != null) {
             g.drawImage(backgroundImage.getImage(), 0, 0, getWidth(), getHeight(), this);
@@ -171,6 +159,7 @@ public class GamePanel extends JPanel implements GameClientListener {
             g.fillRect(0, 0, getWidth(), getHeight());
         }
 
+
         if (gameLogic.getGameMode() != null) {
             int boardStartX = (getWidth() - Board.CANVAS_WIDTH) / 2;
             int boardStartY = (getHeight() - Board.CANVAS_HEIGHT) / 2;
@@ -178,6 +167,7 @@ public class GamePanel extends JPanel implements GameClientListener {
             gameLogic.getBoard().paint(g);
             g.translate(-boardStartX, -boardStartY);
         }
+
 
         if (gameLogic.getGameMode() == GameLogic.GameMode.VS_AI) {
             if (gameLogic.getPlayerSeed() != null && gameLogic.getAiSeed() != null && gameLogic.getCurrentState() == State.PLAYING) {
@@ -194,6 +184,7 @@ public class GamePanel extends JPanel implements GameClientListener {
             }
         }
 
+
         if (gameLogic.getCurrentState() != State.PLAYING) {
             gameUI.getStatusBar().setForeground(Color.RED);
             gameUI.setStatusText(gameLogic.getCurrentState().getDisplayName() + "! Click Play Again to restart.");
@@ -203,6 +194,7 @@ public class GamePanel extends JPanel implements GameClientListener {
             gameUI.setStatusText("Welcome, " + gameLogic.getLoggedInUsername() + "! Please select a game mode.");
         }
     }
+
 
     @Override
     public void onConnected(String message) {}
@@ -223,3 +215,4 @@ public class GamePanel extends JPanel implements GameClientListener {
     @Override
     public void onConnectionError(String message) {}
 }
+

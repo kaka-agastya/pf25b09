@@ -37,7 +37,7 @@ public class GameUI {
         topPanel.setLayout(new BoxLayout(topPanel, BoxLayout.Y_AXIS));
         topPanel.setBorder(BorderFactory.createEmptyBorder(20, 0, 10, 0));
 
-        titleLabel = new JLabel("Tiny Tactics!");
+        titleLabel = new JLabel("TicTacToe!");
         titleLabel.setFont(new Font("Arial", Font.BOLD, 48));
         titleLabel.setForeground(Color.YELLOW);
         titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -109,7 +109,7 @@ public class GameUI {
     }
 
     private void styleButton(JButton button, Color bgColor) {
-        button.setFont(new Font("Arial", Font.BOLD, 16));
+        button.setFont(new Font("Arial", Font.BOLD, 30));
         button.setBackground(bgColor);
         button.setForeground(Color.WHITE);
         button.setFocusPainted(false);
@@ -133,7 +133,7 @@ public class GameUI {
     private void createSeedSelectionPanel() {
         seedSelectionPanel = new JPanel();
         seedSelectionPanel.setOpaque(false);
-        seedSelectionPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 20));
+        seedSelectionPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 120));
         seedSelectionPanel.setBorder(BorderFactory.createEmptyBorder(50, 50, 50, 50));
 
         selectXButton = new JButton("Play as X");
@@ -149,7 +149,7 @@ public class GameUI {
     private void createFirstTurnSelectionPanel() {
         firstTurnSelectionPanel = new JPanel();
         firstTurnSelectionPanel.setOpaque(false);
-        firstTurnSelectionPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 20));
+        firstTurnSelectionPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 120));
         firstTurnSelectionPanel.setBorder(BorderFactory.createEmptyBorder(50, 50, 50, 50));
 
         playerStartsButton = new JButton("You Start");

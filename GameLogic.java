@@ -4,6 +4,7 @@ public class GameLogic {
         VS_AI
     }
 
+
     private Board board;
     private State currentState;
     private Seed currentPlayer;
@@ -19,6 +20,7 @@ public class GameLogic {
     private final GameUI gameUI;
     private final GamePanel gamePanel;
 
+
     public GameLogic(String username, GameUI gameUI, GamePanel gamePanel) {
         this.loggedInUsername = username;
         this.gameUI = gameUI;
@@ -28,9 +30,11 @@ public class GameLogic {
         this.isMyTurn = false;
     }
 
+
     public void initGame() {
         board = new Board();
     }
+
 
     public void newGame() {
         board.newGame();
@@ -50,6 +54,7 @@ public class GameLogic {
         }
     }
 
+
     public void updateScore(Seed winner) {
         if (currentState == State.CROSS_WON) {
             xScore++;
@@ -60,6 +65,7 @@ public class GameLogic {
         System.out.println("Score updated: X=" + xScore + ", O=" + oScore);
     }
 
+
     public void resetScores() {
         xScore = 0;
         oScore = 0;
@@ -68,10 +74,11 @@ public class GameLogic {
         System.out.println("Scores reset and new game started");
     }
 
+
     public Board getBoard() { return board; }
-    public State getCurrentState() { 
+    public State getCurrentState() {
         System.out.println("Current state: " + currentState);
-        return currentState; 
+        return currentState;
     }
     public void setCurrentState(State state) { this.currentState = state; }
     public Seed getCurrentPlayer() { return currentPlayer; }
@@ -91,3 +98,4 @@ public class GameLogic {
     public Seed getAiSeed() { return aiSeed; }
     public void setAiSeed(Seed seed) { this.aiSeed = seed; }
 }
+
