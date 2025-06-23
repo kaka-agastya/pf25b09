@@ -22,7 +22,7 @@ public class GamePanel extends JPanel implements GameClientListener {
     public GamePanel(String username) {
         gameUI = new GameUI();
         gameLogic = new GameLogic(username, gameUI, this);
-        gameUI.setGameLogic(gameLogic); // Set GameLogic di GameUI
+        gameUI.setGameLogic(gameLogic);
         multiplayerManager = new MultiplayerManager(gameLogic, gameUI, this);
         aiManager = new AIManager(gameLogic, gameUI, this);
 
@@ -40,26 +40,21 @@ public class GamePanel extends JPanel implements GameClientListener {
             setBackground(new Color(50, 50, 100));
         }
 
-
         super.setLayout(new BorderLayout());
         super.setPreferredSize(new Dimension(Board.CANVAS_WIDTH + 300, Board.CANVAS_HEIGHT + 300));
         super.setBorder(BorderFactory.createLineBorder(COLOR_BG_STATUS, 2, false));
         super.setOpaque(false);
 
-
         add(gameUI.getTopPanel(), BorderLayout.PAGE_START);
         add(gameUI.getBottomPanel(), BorderLayout.PAGE_END);
-        add(gameUI.getStatusBar(), BorderLayout.SOUTH); // Status bar di bagian bawah
+        add(gameUI.getStatusBar(), BorderLayout.SOUTH);
         addMouseListenerToGameBoard();
 
-
         addListeners();
-
 
         gameLogic.initGame();
         gameLogic.newGame();
     }
-
 
     private void addListeners() {
         gameUI.getPlayVsComputerButton().addActionListener(e -> {
@@ -139,7 +134,7 @@ public class GamePanel extends JPanel implements GameClientListener {
                 }
             } else if (gameLogic.getCurrentState() != State.PLAYING) {
                 gameUI.setStatusText(gameLogic.getCurrentState().getDisplayName() + "! Click Play Again to restart.");
-                gameUI.updateActionButtonsVisibility(true); // Pastikan tombol muncul saat permainan berakhir
+                gameUI.updateActionButtonsVisibility(true);
             } else if (!gameLogic.isMyTurn()) {
                 gameUI.setStatusText("It's not your turn. Please wait.");
             }
@@ -188,7 +183,7 @@ public class GamePanel extends JPanel implements GameClientListener {
         if (gameLogic.getCurrentState() != State.PLAYING) {
             gameUI.getStatusBar().setForeground(Color.RED);
             gameUI.setStatusText(gameLogic.getCurrentState().getDisplayName() + "! Click Play Again to restart.");
-            gameUI.updateActionButtonsVisibility(true); // Pastikan tombol muncul saat permainan berakhir
+            gameUI.updateActionButtonsVisibility(true);
         } else if (gameLogic.getGameMode() == null) {
             gameUI.getStatusBar().setForeground(Color.BLACK);
             gameUI.setStatusText("Welcome, " + gameLogic.getLoggedInUsername() + "! Please select a game mode.");

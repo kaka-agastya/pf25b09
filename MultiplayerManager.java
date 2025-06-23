@@ -22,7 +22,7 @@ public class MultiplayerManager {
     }
 
     public void promptMultiplayerSetup() {
-        gameUI.updateModeButtonsVisibility(false); // Sembunyikan tombol mode
+        gameUI.updateModeButtonsVisibility(false);
         String[] options = {"Create Game", "Join Game"};
         int choice = JOptionPane.showOptionDialog(
                 null,
