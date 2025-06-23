@@ -6,6 +6,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.ArrayList; 
+import java.util.List;      
 
 public class DatabaseManager {
     private static final String DB_HOST = "mysql-tictactoee-kakagastya2-ecdb.c.aivencloud.com";
@@ -67,6 +69,7 @@ public class DatabaseManager {
         String userName = DB_USER;
         String dbPassword = DB_PASS;
 
+
         for (int i = 0; i < args.length; i++) {
             if (i + 1 < args.length) {
                 switch (args[i].toLowerCase(Locale.ROOT)) {
@@ -79,17 +82,21 @@ public class DatabaseManager {
             }
         }
 
+
         if (host == null || port == null || databaseName == null) {
             System.out.println("DatabaseManager: Host, port, database information is required.");
             return "";
         }
 
+
         Class.forName("com.mysql.cj.jdbc.Driver");
         String sqlQuery = "SELECT password FROM gameuser WHERE username = ?";
+
 
         try (Connection connection =
                      DriverManager.getConnection("jdbc:mysql://" + host + ":" + port + "/" + databaseName + "?sslmode=require", userName, dbPassword);
              PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery)) {
+
 
             preparedStatement.setString(1, uName);
             try (ResultSet resultSet = preparedStatement.executeQuery()) {

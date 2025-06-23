@@ -3,6 +3,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.net.URL;
 
+
 public class GamePanel extends JPanel implements GameClientListener {
     private static final long serialVersionUID = 1L;
 
@@ -18,7 +19,7 @@ public class GamePanel extends JPanel implements GameClientListener {
     public GamePanel(String username) {
         gameUI = new GameUI();
         gameLogic = new GameLogic(username, gameUI, this);
-        gameUI.setGameLogic(gameLogic); // Set GameLogic di GameUI
+        gameUI.setGameLogic(gameLogic); 
         multiplayerManager = new MultiplayerManager(gameLogic, gameUI, this);
         aiManager = new AIManager(gameLogic, gameUI, this);
 
@@ -29,11 +30,14 @@ public class GamePanel extends JPanel implements GameClientListener {
             } else {
                 System.err.println("Background image not found: images/background.jpg");
                 setBackground(new Color(50, 50, 100));
+                setBackground(new Color(50, 50, 100));
             }
         } catch (Exception e) {
             System.err.println("Error loading background image: " + e.getMessage());
             setBackground(new Color(50, 50, 100));
+            setBackground(new Color(50, 50, 100));
         }
+
 
         super.setLayout(new BorderLayout());
         super.setPreferredSize(new Dimension(Board.CANVAS_WIDTH + 300, Board.CANVAS_HEIGHT + 300));
@@ -42,7 +46,7 @@ public class GamePanel extends JPanel implements GameClientListener {
 
         add(gameUI.getTopPanel(), BorderLayout.PAGE_START);
         add(gameUI.getBottomPanel(), BorderLayout.PAGE_END);
-        add(gameUI.getStatusBar(), BorderLayout.SOUTH); // Status bar di bagian bawah
+        add(gameUI.getStatusBar(), BorderLayout.SOUTH); 
         addMouseListenerToGameBoard();
 
         addListeners();
@@ -80,7 +84,32 @@ public class GamePanel extends JPanel implements GameClientListener {
         });
         gameUI.getPlayerStartsButton().addActionListener(e -> aiManager.startVsAIGame(true));
         gameUI.getAiStartsButton().addActionListener(e -> aiManager.startVsAIGame(false));
+        gameUI.getPlayVsFriendButton().addActionListener(e -> {
+            gameLogic.setGameMode(GameLogic.GameMode.MULTIPLAYER);
+            multiplayerManager.promptMultiplayerSetup();
+        });
+        gameUI.getPlayAgainButton().addActionListener(e -> {
+            System.out.println("Play Again button clicked");
+            gameLogic.newGame();
+        });
+        gameUI.getResetScoreButton().addActionListener(e -> {
+            System.out.println("Reset Score button clicked");
+            gameLogic.resetScores();
+        });
+        gameUI.getSelectXButton().addActionListener(e -> {
+            aiManager.setPlayerSeed(Seed.CROSS);
+            aiManager.setAiSeed(Seed.NOUGHT);
+            gameUI.showFirstTurnPanelForVsAI();
+        });
+        gameUI.getSelectOButton().addActionListener(e -> {
+            aiManager.setPlayerSeed(Seed.NOUGHT);
+            aiManager.setAiSeed(Seed.CROSS);
+            gameUI.showFirstTurnPanelForVsAI();
+        });
+        gameUI.getPlayerStartsButton().addActionListener(e -> aiManager.startVsAIGame(true));
+        gameUI.getAiStartsButton().addActionListener(e -> aiManager.startVsAIGame(false));
     }
+
 
     private void addMouseListenerToGameBoard() {
         MouseListener[] listeners = getMouseListeners();
@@ -105,7 +134,8 @@ public class GamePanel extends JPanel implements GameClientListener {
         int boardEndY = boardStartY + Board.CANVAS_HEIGHT;
 
         if (mouseX >= boardStartX && mouseX < boardEndX &&
-            mouseY >= boardStartY && mouseY < boardEndY) {
+                mouseY >= boardStartY && mouseY < boardEndY) {
+
 
             int row = (mouseY - boardStartY) / Cell.SIZE;
             int col = (mouseX - boardStartX) / Cell.SIZE;
