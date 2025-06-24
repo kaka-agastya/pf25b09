@@ -11,7 +11,7 @@ import java.net.URL;
  * dan juga menangani interaksi pengguna langsung dengan papan permainan (klik mouse).
  * Ini adalah jembatan antara tampilan grafis (GUI) dan logika game.
  */
-public class GamePanel extends JPanel implements GameClientListener {
+public class GamePanel extends JPanel {
     private static final long serialVersionUID = 1L; // Untuk menghindari peringatan serializable
 
     // Konstanta untuk judul jendela dan warna status bar
@@ -235,27 +235,4 @@ public class GamePanel extends JPanel implements GameClientListener {
             gameUI.setStatusText("Welcome, " + gameLogic.getLoggedInUsername() + "! Please select a game mode.");
         }
     }
-
-    // --- Implementasi metode dari antarmuka GameClientListener ---
-    // Metode-metode ini saat ini kosong, menunjukkan bahwa fungsionalitas
-    // GameClient/GameServer untuk gameplay tidak sepenuhnya terintegrasi
-    // dalam GamePanel versi ini.
-    @Override
-    public void onConnected(String message) {}
-    @Override
-    public void onDisconnected(String message) {}
-    @Override
-    public void onPlayerAssigned(String role) {}
-    @Override
-    public void onTurnChange(boolean myTurn, String playerSymbol) {}
-    @Override
-    public void onMoveReceived(String playerSymbol, int row, int col) {}
-    @Override
-    public void onGameOver(State finalState) {}
-    @Override
-    public void onInvalidMove(String message) {}
-    @Override
-    public void onMessage(String message) {}
-    @Override
-    public void onConnectionError(String message) {}
 }
