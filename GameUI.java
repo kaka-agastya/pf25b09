@@ -3,7 +3,7 @@ import java.awt.*;
 
 public class GameUI {
     public static final Color COLOR_CROSS = new Color(239, 105, 80);
-    public static final Color COLOR_NOUGHT = new Color(64, 154, 225);
+    public static final Color COLOR_NOUGHT = new Color(0, 255, 0);
     public static final Color COLOR_BG_STATUS = new Color(0, 0, 0, 255);
     public static final Font FONT_STATUS = new Font("OCR A Extended", Font.PLAIN, 14);
 

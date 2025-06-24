@@ -42,7 +42,7 @@ public class AIManager {
         } else {
             gameLogic.setMyTurn(false);
             gameUI.setStatusText("You are " + playerSeedDisplay + ". AI's turn.");
-            Timer timer = new Timer(100, new ActionListener() {
+            Timer timer = new Timer(500, new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     ((Timer) e.getSource()).stop();
@@ -79,7 +79,7 @@ public class AIManager {
             if (gameLogic.getCurrentState() == State.PLAYING) {
                 gameLogic.setMyTurn(false);
                 gameUI.setStatusText("AI's turn. Please wait.");
-                Timer timer = new Timer(100, new ActionListener() {
+                Timer timer = new Timer(500, new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         ((Timer) e.getSource()).stop();
@@ -95,7 +95,7 @@ public class AIManager {
                 gameLogic.setMyTurn(false);
                 gameUI.updateActionButtonsVisibility(true);
                 System.out.println("Setting action buttons visible: true");
-                SoundEffect.DIE.play();
+                SoundEffect.WIN.play();
             }
         } else {
             gameUI.setStatusText("Invalid move! Cell already occupied or game not in progress.");
@@ -148,7 +148,7 @@ public class AIManager {
         if (aiRow != -1 && aiCol != -1) {
             System.out.println("AI move: Row=" + aiRow + ", Col=" + aiCol + ", Seed=" + gameLogic.getAiSeed());
             gameLogic.getBoard().cells[aiRow][aiCol].content = gameLogic.getAiSeed();
-            SoundEffect.DIE.play();
+            SoundEffect.TOY.play();
             gameLogic.setCurrentState(gameLogic.getBoard().stepGame(gameLogic.getAiSeed(), aiRow, aiCol));
 
 
@@ -170,7 +170,7 @@ public class AIManager {
                 gameLogic.setMyTurn(false);
                 gameUI.updateActionButtonsVisibility(true);
                 System.out.println("Setting action buttons visible: true (Game over)");
-                SoundEffect.DIE.play();
+                SoundEffect.WIN.play();
             }
         } else {
             gameUI.setStatusText("AI couldn't find a move! (Error in AI logic or full board)");

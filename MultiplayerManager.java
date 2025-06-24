@@ -95,7 +95,7 @@ public class MultiplayerManager {
             return;
         }
         if (gameLogic.getCurrentState() == State.PLAYING && gameLogic.isMyTurn() &&
-            gameLogic.getBoard().cells[row][col].content == Seed.NO_SEED) {
+                gameLogic.getBoard().cells[row][col].content == Seed.NO_SEED) {
             Seed playerSeed = gameLogic.getPlayerRole().equals("X") ? Seed.CROSS : Seed.NOUGHT;
             gameLogic.getBoard().cells[row][col].content = playerSeed;
             SoundEffect.EAT_FOOD.play();
@@ -135,7 +135,7 @@ public class MultiplayerManager {
                 gameUI.updateActionButtonsVisibility(true);
                 gameUI.showModeButtonsPanel(); // Tampilkan kembali tombol mode saat permainan berakhir
                 System.out.println("MultiplayerManager: Setting action buttons visible: true");
-                SoundEffect.DIE.play();
+                SoundEffect.WIN.play();
             }
         } else {
             gameUI.setStatusText("Invalid move! Cell already occupied or not your turn.");
@@ -165,7 +165,7 @@ public class MultiplayerManager {
 
                 Seed opponentSeed = latestMove.playerSeed.equals("X") ? Seed.CROSS : Seed.NOUGHT;
                 gameLogic.getBoard().cells[latestMove.row][latestMove.col].content = opponentSeed;
-                SoundEffect.EAT_FOOD.play();
+                SoundEffect.TOY.play();
                 gameLogic.setCurrentState(gameLogic.getBoard().stepGame(opponentSeed, latestMove.row, latestMove.col));
 
                 SwingUtilities.invokeLater(() -> {
@@ -185,7 +185,7 @@ public class MultiplayerManager {
                     gameUI.updateActionButtonsVisibility(true);
                     gameUI.showModeButtonsPanel(); // Tampilkan kembali tombol mode saat permainan berakhir
                     System.out.println("MultiplayerManager: Setting action buttons visible: true (Opponent move)");
-                    SoundEffect.DIE.play();
+                    SoundEffect.WIN.play();
                 }
             } else {
                 System.out.println("MultiplayerManager: No new moves found for gameId=" + gameId + ", lastMoveNumber=" + lastMoveNumber);

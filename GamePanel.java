@@ -28,7 +28,7 @@ public class GamePanel extends JPanel implements GameClientListener {
 
 
         try {
-            URL bgURL = getClass().getClassLoader().getResource("images/background new.jpg");
+            URL bgURL = getClass().getClassLoader().getResource("images/Super Mario Background .jpeg");
             if (bgURL != null) {
                 backgroundImage = new ImageIcon(bgURL);
             } else {
