@@ -15,8 +15,9 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 public enum SoundEffect {
    // Definisi konstanta enum dengan jalur file audio masing-masing
    EAT_FOOD("audio/eatfood.wav"), // Efek suara saat membuat langkah
-   EXPLODE("audio/explode.wav"),  // Efek suara (tidak digunakan secara langsung dalam GamePanel)
-   DIE("audio/die.wav");          // Efek suara saat game berakhir (menang/kalah/seri)
+   TOY("audio/toy.wav"),          // Efek suara saat membuat langkah
+   DIE("audio/die.wav"),       // Efek suara saat game berakhir (menang/kalah/seri)
+   WIN("audio/win.wav");          // Efek suara saat game berakhir (menang/kalah/seri)
 
    /**
     * Inner enum Volume mendefinisikan tingkat volume yang berbeda untuk efek suara.

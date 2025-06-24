@@ -40,11 +40,11 @@ public class GamePanel extends JPanel implements GameClientListener {
 
         // Memuat gambar latar belakang
         try {
-            URL bgURL = getClass().getClassLoader().getResource("images/background new.jpg");
+            URL bgURL = getClass().getClassLoader().getResource("images/Super Mario Background .jpeg");
             if (bgURL != null) {
                 backgroundImage = new ImageIcon(bgURL);
             } else {
-                System.err.println("Background image not found: images/background new.jpg");
+                System.err.println("Background image not found: images/Super Mario Background .jpeg");
                 setBackground(new Color(50, 50, 100)); // Warna solid jika gambar tidak ditemukan
             }
         } catch (Exception e) {

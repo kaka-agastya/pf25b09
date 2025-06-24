@@ -169,7 +169,7 @@ public class MultiplayerManager {
                 gameUI.updateActionButtonsVisibility(true); // Menampilkan tombol aksi
                 gameUI.showModeButtonsPanel(); // Tampilkan kembali tombol mode saat permainan berakhir
                 System.out.println("MultiplayerManager: Setting action buttons visible: true");
-                SoundEffect.DIE.play(); // Memainkan efek suara
+                SoundEffect.WIN.play(); // Memainkan efek suara
             }
         } else {
             gameUI.setStatusText("Invalid move! Cell already occupied or not your turn."); // Pesan error
@@ -216,7 +216,7 @@ public class MultiplayerManager {
                 // Menentukan simbol lawan dan memperbarui sel papan
                 Seed opponentSeed = latestMove.playerSeed.equals("X") ? Seed.CROSS : Seed.NOUGHT;
                 gameLogic.getBoard().cells[latestMove.row][latestMove.col].content = opponentSeed;
-                SoundEffect.EAT_FOOD.play(); // Memainkan efek suara
+                SoundEffect.TOY.play(); // Memainkan efek suara
                 // Memperbarui state game setelah langkah lawan
                 gameLogic.setCurrentState(gameLogic.getBoard().stepGame(opponentSeed, latestMove.row, latestMove.col));
 
@@ -239,7 +239,7 @@ public class MultiplayerManager {
                     gameUI.updateActionButtonsVisibility(true); // Menampilkan tombol aksi
                     gameUI.showModeButtonsPanel(); // Tampilkan kembali tombol mode saat permainan berakhir
                     System.out.println("MultiplayerManager: Setting action buttons visible: true (Opponent move)");
-                    SoundEffect.DIE.play();
+                    SoundEffect.WIN.play();
                 }
             } else {
                 System.out.println("MultiplayerManager: No new moves found for gameId=" + gameId + ", lastMoveNumber=" + lastMoveNumber);

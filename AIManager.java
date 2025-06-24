@@ -129,7 +129,7 @@ public class AIManager {
                 gameLogic.setMyTurn(false); // Memastikan giliran bukan pemain lagi
                 gameUI.updateActionButtonsVisibility(true); // Menampilkan tombol aksi
                 System.out.println("Setting action buttons visible: true");
-                SoundEffect.DIE.play(); // Memainkan efek suara
+                SoundEffect.WIN.play(); // Memainkan efek suara
             }
         } else {
             gameUI.setStatusText("Invalid move! Cell already occupied or game not in progress."); // Pesan error
@@ -186,7 +186,7 @@ public class AIManager {
         if (aiRow != -1 && aiCol != -1) {
             System.out.println("AI move: Row=" + aiRow + ", Col=" + aiCol + ", Seed=" + gameLogic.getAiSeed());
             gameLogic.getBoard().cells[aiRow][aiCol].content = gameLogic.getAiSeed(); // Menetapkan simbol AI ke sel
-            SoundEffect.DIE.play(); // Memainkan efek suara
+            SoundEffect.TOY.play(); // Memainkan efek suara
             // Memperbarui state game setelah langkah AI
             gameLogic.setCurrentState(gameLogic.getBoard().stepGame(gameLogic.getAiSeed(), aiRow, aiCol));
 
@@ -209,7 +209,7 @@ public class AIManager {
                 gameLogic.setMyTurn(false); // Memastikan giliran bukan pemain lagi
                 gameUI.updateActionButtonsVisibility(true); // Menampilkan tombol aksi
                 System.out.println("Setting action buttons visible: true (Game over)");
-                SoundEffect.DIE.play(); // Memainkan efek suara
+                SoundEffect.WIN.play(); // Memainkan efek suara
             }
         } else {
             // Jika AI tidak dapat menemukan langkah yang valid
