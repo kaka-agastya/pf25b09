@@ -62,10 +62,6 @@ public class Board {
     * Pemain yang diberikan membuat langkah pada sel (selectedRow, selectedCol).
     * Metode ini memperbarui isi sel yang dipilih, lalu menghitung dan mengembalikan
     * state game yang baru (PLAYING, DRAW, CROSS_WON, NOUGHT_WON).
-    * @param player Simbol (Seed) pemain yang membuat langkah.
-    * @param selectedRow Baris sel yang dipilih.
-    * @param selectedCol Kolom sel yang dipilih.
-    * @return State objek State yang menunjukkan state game baru.
     */
    public State stepGame(Seed player, int selectedRow, int selectedCol) {
       // Memperbarui papan game dengan langkah pemain
@@ -105,7 +101,6 @@ public class Board {
    /**
     * Menggambar papan itu sendiri pada kanvas grafis yang diberikan.
     * Ini menggambar garis grid dan kemudian meminta setiap sel untuk menggambar isinya.
-    * @param g Konteks Graphics untuk menggambar.
     */
    public void paint(Graphics g) {
       // Menggambar garis grid

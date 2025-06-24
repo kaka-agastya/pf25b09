@@ -20,8 +20,6 @@ public class Cell {
     * Konstruktor untuk Cell.
     * Menginisialisasi sel dengan baris dan kolom yang ditentukan
     * dan mengatur konten awalnya ke NO_SEED (kosong).
-    * @param row Baris sel.
-    * @param col Kolom sel.
     */
    public Cell(int row, int col) {
       this.row = row;
@@ -38,7 +36,6 @@ public class Cell {
 
    /**
     * Menggambar konten sel (X atau O) pada konteks grafis yang diberikan.
-    * @param g Konteks Graphics untuk menggambar.
     */
    public void paint(Graphics g) {
       // Menghitung koordinat X dan Y untuk menggambar simbol di dalam sel
