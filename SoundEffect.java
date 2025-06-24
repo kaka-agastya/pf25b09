@@ -39,7 +39,6 @@ public enum SoundEffect {
    /**
     * Konstruktor pribadi untuk enum SoundEffect.
     * Memuat file audio yang ditentukan dan mempersiapkannya untuk pemutaran.
-    * @param soundFileName Jalur (path) ke file audio.
     */
    private SoundEffect(String soundFileName) {
       try {

@@ -22,10 +22,6 @@ public class MultiplayerManager {
     /**
      * Konstruktor untuk MultiplayerManager.
      * Menginisialisasi referensi ke GameLogic, GameUI, dan GamePanel.
-     * @param gameLogic Objek GameLogic.
-     * @param gameUI Objek GameUI.
-     * @param gamePanel Objek GamePanel.
-     * @throws IllegalArgumentException Jika ada argumen yang null.
      */
     public MultiplayerManager(GameLogic gameLogic, GameUI gameUI, GamePanel gamePanel) {
         if (gameLogic == null || gameUI == null || gamePanel == null) {
@@ -112,8 +108,6 @@ public class MultiplayerManager {
     /**
      * Dipanggil ketika pemain lokal membuat langkah pada sel (row, col).
      * Memperbarui papan lokal, menyimpan langkah ke database, dan melanjutkan polling lawan.
-     * @param row Baris sel yang diklik.
-     * @param col Kolom sel yang diklik.
      */
     public void makeMove(int row, int col) {
         // Memeriksa inisialisasi GameLogic dan Board

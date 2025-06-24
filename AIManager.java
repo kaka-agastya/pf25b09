@@ -19,10 +19,6 @@ public class AIManager {
     /**
      * Konstruktor untuk AIManager.
      * Menginisialisasi referensi ke GameLogic, GameUI, dan GamePanel.
-     * @param gameLogic Objek GameLogic.
-     * @param gameUI Objek GameUI.
-     * @param gamePanel Objek GamePanel.
-     * @throws IllegalArgumentException Jika ada argumen yang null.
      */
     public AIManager(GameLogic gameLogic, GameUI gameUI, GamePanel gamePanel) {
         if (gameLogic == null || gameUI == null || gamePanel == null) {
@@ -35,7 +31,6 @@ public class AIManager {
 
     /**
      * Mengatur simbol (Seed) yang akan digunakan oleh pemain manusia.
-     * @param seed Simbol pemain (CROSS atau NOUGHT).
      */
     public void setPlayerSeed(Seed seed) {
         gameLogic.setPlayerSeed(seed);
@@ -43,7 +38,6 @@ public class AIManager {
 
     /**
      * Mengatur simbol (Seed) yang akan digunakan oleh AI.
-     * @param seed Simbol AI (CROSS atau NOUGHT).
      */
     public void setAiSeed(Seed seed) {
         gameLogic.setAiSeed(seed);
@@ -52,7 +46,6 @@ public class AIManager {
     /**
      * Memulai permainan melawan AI.
      * Menentukan siapa yang memulai duluan (pemain atau AI) dan mengatur UI yang sesuai.
-     * @param humanStarts True jika pemain manusia memulai duluan, false jika AI memulai.
      */
     public void startVsAIGame(boolean humanStarts) {
         gameUI.hideFirstTurnPanel(); // Menyembunyikan panel pilihan giliran pertama
@@ -83,8 +76,6 @@ public class AIManager {
     /**
      * Dipanggil ketika pemain manusia membuat langkah pada sel (row, col).
      * Memperbarui papan, memeriksa state game, dan memicu langkah AI jika game berlanjut.
-     * @param row Baris sel yang diklik.
-     * @param col Kolom sel yang diklik.
      */
     public void makeMove(int row, int col) {
         // Memeriksa inisialisasi GameLogic dan Board

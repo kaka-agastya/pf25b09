@@ -37,12 +37,6 @@ public class DatabaseManager {
 
         /**
          * Konstruktor untuk objek Move.
-         * @param gameId ID unik game.
-         * @param moveNumber Nomor langkah dalam game.
-         * @param playerUsername Username pemain.
-         * @param playerSeed Simbol pemain ("X" atau "O").
-         * @param row Koordinat baris.
-         * @param col Koordinat kolom.
          */
         public Move(String gameId, int moveNumber, String playerUsername, String playerSeed, int row, int col) {
             this.gameId = gameId;
@@ -56,7 +50,6 @@ public class DatabaseManager {
         /**
          * Mengembalikan representasi string dari objek Move.
          * Berguna untuk logging atau debugging.
-         * @return String representasi langkah.
          */
         @Override
         public String toString() {
@@ -74,10 +67,6 @@ public class DatabaseManager {
     /**
      * Mengambil password dari database untuk username yang diberikan.
      * Detail koneksi database bisa di-override melalui argumen baris perintah.
-     * @param uName Username yang ingin dicari password-nya.
-     * @param args Argumen baris perintah, bisa berisi -host, -username, -password, -database, -port.
-     * @return Password jika ditemukan, string kosong jika tidak atau terjadi error.
-     * @throws ClassNotFoundException Jika driver JDBC MySQL tidak ditemukan.
      */
     public static String getPassword(String uName, String[] args) throws ClassNotFoundException {
         String pass = "";
@@ -139,14 +128,6 @@ public class DatabaseManager {
     /**
      * Memasukkan detail langkah pemain ke dalam database.
      * Digunakan dalam mode multiplayer untuk mencatat pergerakan.
-     * @param gameId ID unik game.
-     * @param moveNumber Nomor langkah dalam game.
-     * @param playerUsername Username pemain yang melakukan langkah.
-     * @param playerSeed Simbol pemain ("X" atau "O").
-     * @param row Koordinat baris langkah.
-     * @param col Koordinat kolom langkah.
-     * @throws SQLException Jika terjadi error SQL saat menyisipkan data.
-     * @throws ClassNotFoundException Jika driver JDBC MySQL tidak ditemukan.
      */
     public static void insertMove(String gameId, int moveNumber, String playerUsername, String playerSeed, int row, int col) throws SQLException, ClassNotFoundException {
         Class.forName("com.mysql.cj.jdbc.Driver");
@@ -178,11 +159,6 @@ public class DatabaseManager {
      * Mengambil daftar langkah baru dari database untuk game tertentu.
      * Ini mencari langkah dengan moveNumber yang lebih besar dari lastMoveNumber yang diberikan.
      * Digunakan untuk menyinkronkan state game di mode multiplayer.
-     * @param gameId ID unik game.
-     * @param lastMoveNumber Nomor langkah terakhir yang diketahui.
-     * @return List objek Move baru.
-     * @throws SQLException Jika terjadi error SQL saat mengambil data.
-     * @throws ClassNotFoundException Jika driver JDBC MySQL tidak ditemukan.
      */
     public static List<Move> fetchMoves(String gameId, int lastMoveNumber) throws SQLException, ClassNotFoundException {
         List<Move> newMoves = new ArrayList<>(); // List untuk menyimpan langkah-langkah baru
@@ -220,9 +196,6 @@ public class DatabaseManager {
     /**
      * Menghapus semua langkah game dari database untuk game ID tertentu.
      * Ini digunakan saat game baru dibuat untuk memastikan papan bersih.
-     * @param gameId ID unik game yang langkah-langkahnya akan dihapus.
-     * @throws SQLException Jika terjadi error SQL saat menghapus data.
-     * @throws ClassNotFoundException Jika driver JDBC MySQL tidak ditemukan.
      */
     public static void clearGameMoves(String gameId) throws SQLException, ClassNotFoundException {
         Class.forName("com.mysql.cj.jdbc.Driver");

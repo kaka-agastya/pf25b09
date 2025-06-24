@@ -18,7 +18,6 @@ public enum State {
     /**
      * Konstruktor pribadi untuk enum State.
      * Menginisialisasi displayName untuk setiap state.
-     * @param displayName Nama tampilan yang akan digunakan untuk state ini.
      */
     private State(String displayName) {
         this.displayName = displayName;
@@ -26,7 +25,6 @@ public enum State {
 
     /**
      * Mengembalikan nama tampilan dari state ini.
-     * @return String yang merepresentasikan nama tampilan state.
      */
     public String getDisplayName() {
         return displayName;

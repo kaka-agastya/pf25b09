@@ -151,8 +151,6 @@ public class GameUI {
 
     /**
      * Menerapkan gaya visual standar pada JButton.
-     * @param button JButton yang akan diberi gaya.
-     * @param bgColor Warna latar belakang tombol.
      */
     private void styleButton(JButton button, Color bgColor) {
         button.setFont(new Font("Arial", Font.BOLD, 30));
@@ -167,8 +165,6 @@ public class GameUI {
 
     /**
      * Menerapkan gaya visual khusus untuk tombol pilihan giliran.
-     * @param button JButton yang akan diberi gaya.
-     * @param bgColor Warna latar belakang tombol.
      */
     private void styleTurnButton(JButton button, Color bgColor) {
         button.setFont(new Font("Arial", Font.BOLD, 28));
@@ -278,7 +274,6 @@ public class GameUI {
     /**
      * Mengatur visibilitas tombol "Play Again" dan "Reset Score".
      * Pembaruan dilakukan di EDT untuk keamanan thread.
-     * @param visible True jika tombol harus terlihat, false sebaliknya.
      */
     public void updateActionButtonsVisibility(boolean visible) {
         SwingUtilities.invokeLater(() -> {
@@ -297,7 +292,6 @@ public class GameUI {
     /**
      * Mengatur visibilitas tombol pilihan mode game ("Play vs Computer", "Play vs Friend").
      * Pembaruan dilakukan di EDT untuk keamanan thread.
-     * @param visible True jika tombol harus terlihat, false sebaliknya.
      */
     public void updateModeButtonsVisibility(boolean visible) {
         SwingUtilities.invokeLater(() -> {
@@ -359,7 +353,6 @@ public class GameUI {
     /**
      * Mengatur teks pada status bar.
      * Pembaruan dilakukan di EDT untuk keamanan thread.
-     * @param text Teks yang akan ditampilkan.
      */
     public void setStatusText(String text) {
         SwingUtilities.invokeLater(() -> statusBar.setText(text));

@@ -28,7 +28,6 @@ public class GameClient {
 
     /**
      * Konstruktor GameClient.
-     * @param listener Listener yang akan menerima callback dari GameClient.
      */
     public GameClient(GameClientListener listener) {
         this.listener = listener;
@@ -37,8 +36,6 @@ public class GameClient {
     /**
      * Mencoba terhubung ke GameServer.
      * Operasi koneksi dilakukan dalam thread terpisah agar tidak memblokir UI.
-     * @param serverIp Alamat IP server.
-     * @param serverPort Port server.
      */
     public void connectToServer(String serverIp, int serverPort) {
         this.serverIp = serverIp;
@@ -75,8 +72,6 @@ public class GameClient {
 
     /**
      * Mengirim pergerakan (baris dan kolom) ke server.
-     * @param row Baris pergerakan.
-     * @param col Kolom pergerakan.
      */
     public void sendMove(int row, int col) {
         if (out != null && socket != null && socket.isConnected()) {

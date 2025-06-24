@@ -38,9 +38,6 @@ public class GameLogic {
      * Konstruktor untuk GameLogic.
      * Menginisialisasi objek GameLogic dengan username pemain yang login
      * dan referensi ke objek GameUI dan GamePanel.
-     * @param username Username pemain yang login.
-     * @param gameUI Objek GameUI untuk interaksi UI.
-     * @param gamePanel Objek GamePanel untuk pembaruan visual.
      */
     public GameLogic(String username, GameUI gameUI, GamePanel gamePanel) {
         this.loggedInUsername = username;
@@ -87,7 +84,6 @@ public class GameLogic {
     /**
      * Memperbarui skor berdasarkan pemenang game.
      * Dipanggil saat game berakhir dengan kemenangan.
-     * @param winner Seed dari pemain yang memenangkan game.
      */
     public void updateScore(Seed winner) {
         if (currentState == State.CROSS_WON) {

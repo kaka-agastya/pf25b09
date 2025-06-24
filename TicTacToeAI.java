@@ -21,9 +21,6 @@ public class TicTacToeAI {
      * 3. Tengah: Ambil posisi tengah (jika kosong).
      * 4. Sudut: Ambil posisi sudut (jika kosong).
      * 5. Sisi: Ambil posisi sisi acak (jika kosong).
-     * @param currentBoard Objek Board yang merepresentasikan papan permainan saat ini.
-     * @param aiPlayerSeed Simbol (Seed) AI (CROSS atau NOUGHT).
-     * @return Array int[] berukuran 2 ({baris, kolom}) dari langkah terbaik, atau {-1, -1} jika tidak ada langkah valid.
      */
     public int[] findBestMove(Board currentBoard, Seed aiPlayerSeed) {
         // Menentukan simbol lawan

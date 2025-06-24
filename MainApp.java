@@ -14,7 +14,6 @@ public class MainApp {
     /**
      * Metode utama (entry point) aplikasi.
      * Mengelola proses login pengguna dan memulai GUI game.
-     * @param args Argumen baris perintah, mungkin berisi detail koneksi database.
      */
     public static void main(String[] args) {
         // Variabel untuk melacak keberhasilan login

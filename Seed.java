@@ -22,8 +22,6 @@ public enum Seed {
    /**
     * Konstruktor pribadi untuk enum Seed.
     * Menginisialisasi displayName dan mencoba memuat gambar dari file yang diberikan.
-    * @param name Nama tampilan untuk Seed.
-    * @param imageFilename Nama file gambar untuk Seed ini (null untuk NO_SEED).
     */
    private Seed(String name, String imageFilename) {
       this.displayName = name; // Mengatur nama tampilan
@@ -45,7 +43,6 @@ public enum Seed {
 
    /**
     * Mengembalikan nama tampilan dari Seed ini.
-    * @return Nama tampilan (misalnya, "X", "O", atau " ").
     */
    public String getDisplayName() {
       return displayName;
@@ -53,7 +50,6 @@ public enum Seed {
 
    /**
     * Mengembalikan objek Image yang terkait dengan Seed ini.
-    * @return Objek Image (gambar simbol X atau O), atau null jika tidak ada.
     */
    public Image getImage() {
       return img;

@@ -28,7 +28,6 @@ public class GamePanel extends JPanel implements GameClientListener {
     /**
      * Konstruktor untuk GamePanel.
      * Menginisialisasi semua objek manajer game dan menyiapkan tampilan panel.
-     * @param username Username pemain yang saat ini login.
      */
     public GamePanel(String username) {
         // Inisialisasi objek-objek manajer game
@@ -139,7 +138,6 @@ public class GamePanel extends JPanel implements GameClientListener {
     /**
      * Menangani peristiwa klik mouse pada GamePanel.
      * Menentukan sel papan mana yang diklik dan memicu aksi game yang sesuai.
-     * @param e Objek MouseEvent yang berisi detail klik.
      */
     private void handleMouseClick(MouseEvent e) {
         int mouseX = e.getX(); // Koordinat X klik mouse
@@ -186,7 +184,6 @@ public class GamePanel extends JPanel implements GameClientListener {
     /**
      * Metode untuk menggambar komponen pada panel.
      * Dipanggil oleh sistem Swing setiap kali panel perlu digambar ulang.
-     * @param g Objek Graphics untuk menggambar.
      */
     @Override
     public void paintComponent(Graphics g) {
