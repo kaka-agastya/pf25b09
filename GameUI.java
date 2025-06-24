@@ -1,5 +1,3 @@
-// package GameUI; // Asumsi paket jika tidak ada di file.
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -12,8 +10,8 @@ import java.awt.*;
  */
 public class GameUI {
     // Konstanta warna untuk elemen UI
-    public static final Color COLOR_CROSS = new Color(239, 105, 80);  // Merah untuk X
-    public static final Color COLOR_NOUGHT = new Color(64, 154, 225); // Biru untuk O
+    public static final Color COLOR_CROSS = new Color(230,35,31,255);  // Merah untuk X
+    public static final Color COLOR_NOUGHT = new Color(50,205,50); // Hijau untuk O
     public static final Color COLOR_BG_STATUS = new Color(0, 0, 0, 255); // Hitam penuh untuk status bar
     public static final Font FONT_STATUS = new Font("OCR A Extended", Font.PLAIN, 14); // Font untuk status bar
 
@@ -99,11 +97,11 @@ public class GameUI {
 
         // Tombol "Play vs Computer"
         playVsComputerButton = new JButton("Play vs Computer");
-        styleButton(playVsComputerButton, new Color(64, 154, 225)); // Gaya tombol biru
+        styleButton(playVsComputerButton, new Color(255,165,0)); // Gaya tombol orange
 
         // Tombol "Play vs Friend"
         playVsFriendButton = new JButton("Play vs Friend");
-        styleButton(playVsFriendButton, new Color(239, 105, 80)); // Gaya tombol merah
+        styleButton(playVsFriendButton, new Color(230,35,31,255)); // Gaya tombol merah
 
         // Menambahkan tombol mode ke modeButtonsPanel
         modeButtonsPanel.add(playVsComputerButton);
@@ -123,12 +121,12 @@ public class GameUI {
 
         // Tombol "Play Again"
         playAgainButton = new JButton("Play Again");
-        styleButton(playAgainButton, new Color(239, 105, 80));
+        styleButton(playAgainButton, new Color(2,155,213,255));
         playAgainButton.setVisible(false); // Awalnya tidak terlihat
 
         // Tombol "Reset Score"
         resetScoreButton = new JButton("Reset Score");
-        styleButton(resetScoreButton, new Color(239, 105, 80));
+        styleButton(resetScoreButton, new Color(230,35,31,255));
         resetScoreButton.setVisible(false); // Awalnya tidak terlihat
 
         // Menambahkan tombol aksi ke bottomPanel
@@ -160,7 +158,7 @@ public class GameUI {
         button.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
         button.setCursor(new Cursor(Cursor.HAND_CURSOR)); // Mengubah kursor menjadi tangan saat di hover
         button.setOpaque(true); // Memastikan warna latar belakang terlihat
-        button.setBorder(BorderFactory.createLineBorder(new Color(40, 120, 180), 2, true)); // Border
+        button.setBorder(BorderFactory.createLineBorder(new Color(255, 255, 255), 2, true)); // Border
     }
 
     /**
